@@ -113,6 +113,26 @@ function parseDate(input) {
   return null;
 }
 
+function calculateLocal(name1, name2, bday1, bday2) {
+  const nums1 = bday1.replace(/-/g, '');
+  const nums2 = bday2.replace(/-/g, '');
+
+  let combined = nums1 + nums2 + name1.toLowerCase() + name2.toLowerCase();
+  let sum = 0;
+
+  for (let i = 0; i < combined.length; i++) {
+    sum += combined.charCodeAt(i);
+  }
+
+  let raw = sum * 3;
+
+  if (raw % 100 === 0) {
+    return 100;
+  }
+
+  return (raw % 96) + 5;
+}
+
 function getResultMessage(score) {
   if (score === 100) {
     return '💯 PERFECT MATCH. This is destiny. 💍';
@@ -203,26 +223,34 @@ form.addEventListener('submit', async (e) => {
   try {
     await showLoading();
 
-    const response = await fetch('/api/compatibility', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name1: name1,
-        birthday1: parsedBday1,
-        name2: name2,
-        birthday2: parsedBday2
-      })
-    });
+    let score;
 
-    const data = await response.json();
+    try {
+      const response = await fetch('/api/compatibility', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name1: name1,
+          birthday1: parsedBday1,
+          name2: name2,
+          birthday2: parsedBday2
+        })
+      });
 
-    if (!response.ok) {
-      throw new Error(data.message || 'Something went wrong.');
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong.');
+      }
+
+      score = data.compatibility;
+    } catch (err) {
+      score = calculateLocal(name1, name2, parsedBday1, parsedBday2);
     }
 
-    showResult(data.compatibility, name1, name2);
+    showResult(score, name1, name2);
 
   } catch (err) {
     loading.style.display = 'none';
