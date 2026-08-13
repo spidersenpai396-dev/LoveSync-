@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoveSync 💘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <div class="container">
+
+    <header class="header">
+      <h1 class="logo">💘 LoveSync</h1>
+      <p class="tagline">Discover your totally scientific<br>love compatibility.</p>
+    </header>
+
+    <form id="loveForm" class="love-form" novalidate>
+
+      <div class="card">
+        <h2 class="card-title">YOUR DETAILS ❤️</h2>
+        <div class="form-group">
+          <label for="name1">Name</label>
+          <input type="text" id="name1" placeholder="Your name" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="birthday1">Birthday</label>
+          <input type="text" id="birthday1" placeholder="e.g. 1 June 2010" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">PARTNER DETAILS 💕</h2>
+        <div class="form-group">
+          <label for="name2">Name</label>
+          <input type="text" id="name2" placeholder="Their name" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="birthday2">Birthday</label>
+          <input type="text" id="birthday2" placeholder="e.g. 1 June 2010" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="error-msg" id="errorMsg"></div>
+
+      <button type="submit" class="calc-btn" id="calcBtn">
+        💘 CALCULATE LOVE
+      </button>
+
+    </form>
+
+    <div class="loading" id="loading" style="display:none;">
+      <div class="loading-heart">❤️</div>
+      <p class="loading-text" id="loadingText">Connecting hearts...</p>
+    </div>
+
+    <div class="result" id="result" style="display:none;">
+      <h2 class="result-title">💕 YOUR RESULT</h2>
+      <div class="result-percent" id="resultPercent">0%</div>
+      <div class="result-label">LOVE COMPATIBILITY</div>
+      <div class="result-names" id="resultNames">Alex ❤️ Sam</div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="again-btn" id="againBtn">Try Again 🔄</button>
+    </div>
+
+    <p class="privacy-note">
+     The information you enter is sent to the LoveSync to generate your result.
+      Please don't enter sensitive personal information.
+    </p>
+
+    <footer class="footer">
+      Developer: Srijan Khadka 💘
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

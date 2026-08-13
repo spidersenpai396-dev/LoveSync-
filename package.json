@@ -1,0 +1,16 @@
+{
+  "name": "lovesync",
+  "version": "1.0.0",
+  "description": "A fun love compatibility calculator - totally scientific, definitely not random",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["love", "compatibility", "fun", "express"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
